@@ -11,6 +11,9 @@ set(Caffe_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/caffe/include)
 set(Caffe_DIR ${CMAKE_CURRENT_BINARY_DIR}/libcaffe)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
+#Dependencies
+include(cmake/Dependencies.cmake)
+
 # CUDA
 set(USE_CUDNN ON)
 include(cmake/FindcuDNN.cmake)
@@ -36,8 +39,8 @@ include_directories( ${Caffe_INCLUDE_DIR} )
 include_directories( ${Caffe_DIR}/include )
 include_directories( ${Glog_INCLUDE_DIRS} )
 include_directories( ${CUDNN_INCLUDE} )
-include_directories( /usr/include/hdf5/serial/ )
-link_directories( /usr/lib/hdf5/serial/ )
+# include_directories( /usr/include/hdf5/serial/ )
+# link_directories( /usr/lib/hdf5/serial/ )
 
 add_executable(waifu2x-caffe ${exec_src} ${common_srcs})
 
